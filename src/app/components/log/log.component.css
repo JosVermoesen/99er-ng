@@ -1,0 +1,9 @@
+pre {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    white-space: pre;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    word-wrap: normal;
+}

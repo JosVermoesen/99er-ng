@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+}
+.disk-selects {
+    grid-area: disk-selects;
+}
+.files-table {
+    grid-area: files-table;
+    height: 100%;
+    max-height: calc(100vh - 300px);
+    overflow: auto;
+}
+.disk-toolbar {
+    grid-area: disk-toolbar;
+}
+.disk {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "disk-selects"
+        "files-table"
+        "disk-toolbar";
+    grid-row-gap: 8px;
+}
+
+mat-form-field {
+    width: 45%;
+    padding-right: 16px;
+}

@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "primeng/resources/primeng.min.css";
+@import "primeng/resources/themes/saga-blue/theme.css";
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+mat-tab-group, .mat-tab-body-wrapper, mat-tab {
+    height: 100%;
+    overflow: hidden;
+}
+
+.mat-tab-labels .mat-tab-label {
+    min-width: auto;
+}
+
+.margin-right {
+    margin-right: 8px;
+}
+
+.margin-all {
+    margin: 16px;
+}
+
+.full-width {
+    width: 100%;
+}

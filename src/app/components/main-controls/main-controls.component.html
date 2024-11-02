@@ -1,0 +1,110 @@
+<!-- <mat-toolbar class="toolbar">
+    <button mat-raised-button color="warn" class="toolbar-button" (click)="record()" [disabled]="recording || !running"
+        matTooltip="Record video"><fa-icon [icon]="recIcon"></fa-icon><span class="button-text"> Rec</span></button>
+    <button mat-raised-button color="primary" class="toolbar-button" (click)="start()"
+        [disabled]="running && !runningFast" matTooltip="Start TI-99/4A"><fa-icon [icon]="startIcon"></fa-icon><span
+            class="button-text"> Start</span></button>
+    <button mat-raised-button class="toolbar-button" (click)="fast()" [disabled]="running && runningFast"
+        matTooltip="Run faster"><fa-icon [icon]="fastIcon"></fa-icon><span class="button-text"> Fast</span></button>
+    <button mat-raised-button class="toolbar-button" (click)="frame()" [disabled]="running"
+        matTooltip="Run to next vsync"><fa-icon [icon]="frameIcon"></fa-icon><span class="button-text">
+            Frame</span></button>
+    <button mat-raised-button class="toolbar-button" (click)="step($event)" [disabled]="running"
+        matTooltip="Single step. Shift to step over"><fa-icon [icon]="stepIcon"></fa-icon><span class="button-text">
+            Step</span></button>
+    <button mat-raised-button class="toolbar-button" (click)="stop()" [disabled]="!running"
+        matTooltip="Stop TI-99/4A"><fa-icon [icon]="stopIcon"></fa-icon><span class="button-text"> Stop</span></button>
+
+    <button mat-raised-button color="warn" class="toolbar-button" (click)="reset()" matTooltip="Reset TI-99/4A"><fa-icon
+            [icon]="resetIcon"></fa-icon><span class="button-text"> Reset</span></button>
+    <span class="margin-right"></span>
+
+    <button mat-raised-button class="toolbar-button" (click)="fileInputModule.click()" matTooltip="Load cartridge file">
+        <fa-icon [icon]="openModuleIcon"></fa-icon><span class="button-text"> Load Cart</span><input #fileInputModule
+            type="file" (change)="openModule(fileInputModule)" [hidden]="true" multiple="multiple" /> </button>
+
+    <button mat-raised-button class="toolbar-button" (click)="fileInputDisk.click()"
+        matTooltip="Load disk image of file">
+        <fa-icon [icon]="openDiskIcon"></fa-icon><span class="button-text"> Load Disk</span><input #fileInputDisk
+            type="file" (change)="openDisk(fileInputDisk)" [hidden]="true" multiple="multiple" />
+    </button>
+
+    <app-software-menu class="toolbar-button"></app-software-menu>
+
+    <span class="margin-right"></span>
+    <button mat-raised-button class="toolbar-button" (click)="screenshot()" matTooltip="Take screenshot"><fa-icon
+            [icon]="screenshotIcon"></fa-icon><span class="button-text"> Screenshot</span></button>
+    <span class="margin-right"></span>
+    <button mat-raised-button class="toolbar-button" (click)="saveState()" matTooltip="Save TI-99/4A state"><fa-icon
+            [icon]="saveStateIcon"></fa-icon><span class="button-text"> Save State</span></button>
+    <button mat-raised-button class="toolbar-button" (click)="restoreState()" matTooltip="Restore saved state"><fa-icon
+            [icon]="restoreStateIcon"></fa-icon><span class="button-text"> Restore State</span></button>
+    <span class="margin-right"></span>
+    <button mat-raised-button class="toolbar-button" (click)="toggleSidePanel()"
+        matTooltip="Toggle tabbed panel"><fa-icon
+            [icon]="sidePanelVisible ? hideSidePanelIcon : showSidePanelIcon"></fa-icon><span class="button-text">
+            {{sidePanelVisible ? 'Hide Panel' : 'Show Panel'}}</span>
+    </button>
+    <button mat-raised-button class="toolbar-button" (click)="togglePointerLock()"
+        matTooltip="Toggle pointer lock"><fa-icon
+            [icon]="pointerLocked ? pointerUnlockIcon : pointerLockIcon"></fa-icon>&nbsp;<fa-icon
+            [icon]="mousePointerIcon"></fa-icon></button>
+</mat-toolbar> -->
+
+<div class="surface-section">
+    <p-toolbar>
+        <div class="p-toolbar-group-end">
+            <p-button pTooltip="Toggle right buttons" icon="pi pi-eye" styleClass="p-button-info p-button-sm"
+                class="mr-1" (click)="primeRightButtonsToggle()"></p-button>
+            <p-button pTooltip="Toggle video buttons" icon="pi pi-eye" styleClass="p-button-warning p-button-sm"
+                class="mr-1" (click)="primeVideoButtonsToggle()"></p-button>
+            <div *ngIf="primeVideoButtons">
+                <p-button label="Rec" pTooltip="Record a video" icon="pi pi-circle-on"
+                    styleClass="p-button-outlined p-button-danger p-button-sm" (click)="record()"
+                    [disabled]="recording || !running"></p-button>
+                <p-button label="Start" pTooltip="Start TI-99/4A" icon="pi pi-play"
+                    styleClass="p-button-outlined p-button-secondary p-button-sm" (click)="start()"
+                    [disabled]="running && !runningFast"></p-button>
+                <p-button label="Fast" pTooltip="Run faster" icon="pi pi-forward"
+                    styleClass="p-button-outlined p-button-sm" (click)="fast()"
+                    [disabled]="running && runningFast"></p-button>
+                <p-button label="Frame" pTooltip="Run to next vsync" icon="pi pi-fast-forward"
+                    styleClass="p-button-outlined p-button-secondary p-button-sm" (click)="frame()"
+                    [disabled]="running"></p-button>
+                <p-button label="Step" pTooltip="Single step." icon="pi pi-step-forward"
+                    styleClass="p-button-outlined p-button-secondary p-button-sm" (click)="step($event)"
+                    [disabled]="running"></p-button>
+                <p-button label="Stop" pTooltip="Stop TI-99/4A" icon="pi pi-stop"
+                    styleClass="p-button-outlined p-button-warning p-button-sm" class="mr-1" (click)="stop()"
+                    [disabled]="!running"></p-button>
+            </div>
+
+            <p-button label="Reset" pTooltip="Reset TI-99/4A" icon="pi pi-refresh"
+                styleClass="p-button-danger p-button-sm" class="mr-1" (click)="reset()"></p-button>
+            <button pButton label="LC" pTooltip="Load cartridge file" icon="pi pi-book" class="mr-1"
+                (click)="fileInputModule.click()"><input #fileInputModule type="file"
+                    (change)="openModule(fileInputModule)" [hidden]="true" multiple="multiple" />
+            </button>
+            <button pButton label="LD" pTooltip="Load disk image" icon="pi pi-book" class="mr-1"
+                (click)="fileInputDisk.click()"><input #fileInputDisk type="file" (change)="openDisk(fileInputDisk)"
+                    [hidden]="true" multiple="multiple" />
+            </button>
+            <app-software-menu class="toolbar-button"></app-software-menu>
+        </div>        
+
+        <div *ngIf="primeRightButtons" class="p-toolbar-group-end">
+            <p-button label="Screenshot" pTooltip="Take screenshot" icon="pi pi-book"
+                styleClass="p-button-outlined p-button-info p-button-sm" (click)="screenshot()"></p-button>
+            <p-button label="Save State" pTooltip="Save TI-99/4A state" icon="pi pi-book"
+                styleClass="p-button-outlined p-button-info p-button-sm" (click)="saveState()"></p-button>
+            <p-button label="Restore State" pTooltip="Restore saved state" icon="pi pi-book"
+                styleClass="p-button-outlined p-button-info p-button-sm" (click)="restoreState()"></p-button>
+            <p-button label="{{sidePanelVisible ? 'Hide Panel' : 'Show Panel'}}" pTooltip="Toggle tabbed panel"
+                icon="pi pi-book" styleClass="p-button-outlined p-button-info p-button-sm"
+                (click)="toggleSidePanel()"></p-button>
+            <p-button pTooltip="Toggle pointer lock" icon="pi pi-lock"
+                styleClass="p-button-outlined p-button-info p-button-sm" (click)="togglePointerLock()"></p-button>
+        </div>
+    </p-toolbar>
+    <a id="download-link" style="display: none"></a>
+</div>

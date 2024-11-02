@@ -1,0 +1,52 @@
+.status {
+    width: 100%;
+    grid-area: status;
+}
+
+.memory-view {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+.memory-view-1 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    grid-area: memory-view-1;
+}
+
+.memory-view-2 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    grid-area: memory-view-2;
+}
+
+.debugger-toolbar {
+    grid-area: toolbar;
+}
+
+.memory-select {
+    width: 20%;
+    padding-right: 8px;
+}
+
+.address-entry {
+    width: 20%;
+    padding-right: 8px;
+}
+
+.debugger {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "status status"
+        "memory-view-1 memory-view-2"
+        "toolbar toolbar";
+    grid-row-gap: 8px;
+    grid-column-gap: 16px;
+}
